@@ -5,7 +5,7 @@
 package loginsystem;
 
 /**
- *
+ * Login frame
  * @author julialiu
  */
 public class LoginFrame extends javax.swing.JFrame {

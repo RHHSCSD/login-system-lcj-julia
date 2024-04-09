@@ -5,7 +5,7 @@
 package loginsystem;
 
 /**
- *
+ * Home page frame
  * @author julialiu
  */
 public class HomePageFrame extends javax.swing.JFrame {
