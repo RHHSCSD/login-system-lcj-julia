@@ -23,6 +23,7 @@ public class LoginSystem {
     private static ArrayList<UserInfo> users;
     private int logingin;
     private int saveNum;
+    private String delimiter = "|";
 
     /**
      * Encrypt the password
@@ -89,7 +90,7 @@ public class LoginSystem {
 
             // Only write the user into the file if it has a unique name and a strong password
             if ((isUniqueName(name) == true) && (isStrongPass(pass) == true)) {
-                pw.println(name + "|" + encryptedPass + "|" + age + "|" + phone + "|" + mail);
+                pw.println(name + delimiter + encryptedPass + delimiter + age + delimiter + phone + delimiter + mail);
                 pw.close();
                 saveNum = 0;
             } else if (isUniqueName(name) == false) {
@@ -97,7 +98,7 @@ public class LoginSystem {
             } else if (isStrongPass(pass) == false) {
                 saveNum = 2;
             } else if (userFile == null) {
-                pw.println(name + "|" + encryptedPass + "|" + age + "|" + phone + "|" + mail);
+                pw.println(name + delimiter + encryptedPass + delimiter + age + delimiter + phone + delimiter + mail);
                 pw.close();
                 saveNum = 0;
             }
@@ -125,7 +126,7 @@ public class LoginSystem {
                 String oneUser = scanner.nextLine();
 
                 // Split each line at the delimiter
-                String[] userParts = oneUser.split("\\|");
+                String[] userParts = oneUser.split("\\" + delimiter);
 
                 if (userParts.length == 5) {
                     String name = userParts[0];
@@ -142,6 +143,8 @@ public class LoginSystem {
                 }
 
             }
+            
+            scanner.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -278,6 +281,21 @@ public class LoginSystem {
     public static void main(String[] args) {
         // TODO code application logic here
 
+        UserInfo user1 = new UserInfo("PP", "@@QQWWRRww", "5", "Lily", "1234");
+        UserInfo user2 = new UserInfo("4", "12!@qwWq", "4", "Bob", "ILoveBob");
+        UserInfo user3 = new UserInfo("8", "!!22qwwQQ", "9", "hi", "123456");
+        UserInfo user4 = new UserInfo("9", "!!QQw@22", "8", "Jeff", "fdhalhgsjfdgna");
+        LoginSystem login = new LoginSystem();
+        login.loadUser();
+        login.register(user1);
+        login.register(user2);
+        login.register(user3);
+        login.register(user4);
+
+        if(login.loginSys("Bob", "ILoveBob") == 0){
+            System.out.println("logged in");
+        }
+        System.out.println("Here are all registrants: " + users);
 
     }
 
