@@ -164,8 +164,6 @@ public class LoginSystem {
             return true;
         } else {
             for (UserInfo user : users) {
-                System.out.println(user.getUsername());
-                System.out.println(name);
                 if (user.getUsername().equals(name)) {
                     // If it does exist, return false
                     return false;
@@ -282,22 +280,7 @@ public class LoginSystem {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        UserInfo user1 = new UserInfo("PP", "@@QQWWRRww", "5", "Lily", "1234");
-        UserInfo user2 = new UserInfo("4", "12!@qwWq", "4", "Bob", "ILoveBob");
-        UserInfo user3 = new UserInfo("8", "!!22qwwQQ", "9", "hi", "123456");
-        UserInfo user4 = new UserInfo("9", "!!QQw@22", "8", "Jeff", "fdhalhgsjfdgna");
-        LoginSystem login = new LoginSystem();
-        login.loadUser();
-        login.register(user1);
-        login.register(user2);
-        login.register(user3);
-        login.register(user4);
-
-        if(login.loginSys("Bob", "ILoveBob") == 0){
-            System.out.println("logged in");
-        }
-        System.out.println("Here are all registrants: " + users);
-
+      
     }
 
 }
